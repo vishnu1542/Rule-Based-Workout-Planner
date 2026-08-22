@@ -72,6 +72,7 @@ class UserProfile(BaseModel):
     workout_location: WorkoutLocation
     available_equipment: List[Equipment] = [Equipment.none]
     workout_days_per_week: int = Field(..., ge=1, le=7)
+    workout_days: Optional[List[str]] = None
     workout_duration_minutes: int = Field(..., ge=15, le=120)
     preferred_style: WorkoutStyle
     target_muscle_groups: List[str] = []
