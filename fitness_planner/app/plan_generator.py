@@ -116,19 +116,34 @@ def build_weekly_plan(profile):
     equipment_set = _available_equipment_set(profile.available_equipment)
     location = profile.workout_location.value
     max_difficulty = _max_difficulty(fitness_level)
-    days = profile.workout_days_per_week
+
+    selected_days = profile.workout_days if profile.workout_days and len(profile.workout_days) > 0 else None
+    days_count = len(selected_days) if selected_days else profile.workout_days_per_week
+    days_count = max(1, min(7, days_count))
+
     exercises_target = _exercises_per_day(profile.workout_duration_minutes)
 
-    template = SPLIT_TEMPLATES[days]
+    template = SPLIT_TEMPLATES[days_count]
     weekly_plan = []
     total_calories = 0
 
-    for i, day_name in enumerate(DAY_NAMES):
-        if i >= len(template):
+    # Map template split segments to specific user-selected days or default leading days
+    day_splits = {}
+    if selected_days:
+        for idx, day_name in enumerate(selected_days):
+            if idx < len(template) and day_name in DAY_NAMES:
+                day_splits[day_name] = template[idx]
+    else:
+        for idx, (focus_label, categories) in enumerate(template):
+            if idx < len(DAY_NAMES):
+                day_splits[DAY_NAMES[idx]] = (focus_label, categories)
+
+    for day_name in DAY_NAMES:
+        if day_name not in day_splits:
             weekly_plan.append({"day": day_name, "focus": "Rest", "exercises": []})
             continue
 
-        focus_label, categories = template[i]
+        focus_label, categories = day_splits[day_name]
         day_style_override = _select_day_style_params(goal, style, categories, conditions, fitness_level, is_beginner_diabetic)
 
         pools = []
