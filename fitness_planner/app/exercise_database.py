@@ -26,11 +26,11 @@ EXERCISES = {
         {"name": "Dumbbell Fly", "equipment": ["Dumbbells", "Full Gym"], "location": ["Gym", "Home"],
          "difficulty": "Intermediate", "base_cal": 7, "contraindications": [],
          "description": "Lie on a bench and open arms wide with a slight elbow bend, lowering dumbbells.\nSqueeze chest to bring them back together.",
-         "youtube": "https://www.youtube.com/watch?v=3_gz_iyVnhM"},
+         "youtube": "https://www.youtube.com/watch?v=idAvu2HvqSQ&pp=ygUMRHVtYmJlbGwgRmx5"},
         {"name": "Chest Dip", "equipment": ["Full Gym"], "location": ["Gym"], "difficulty": "Advanced",
          "base_cal": 9, "contraindications": [],
          "description": "Lower your body between parallel bars until elbows reach 90 degrees.\nPush back up leaning slightly forward to target chest.",
-         "youtube": "https://www.youtube.com/watch?v=n622LUS15_E"},
+         "youtube": "https://www.youtube.com/watch?v=yN6Q1UI_xkE&pp=ygUJQ2hlc3QgRGlw"},
     ],
     "Back": [
         {"name": "Resistance Band Row", "equipment": ["Resistance Bands"], "location": ["Gym", "Home"],
