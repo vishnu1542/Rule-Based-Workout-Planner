@@ -91,6 +91,7 @@ def _build_exercise_entry(ex, goal, weight_kg, override_reps=None, override_sets
         "target_muscle": ex.get("muscle", ""),
         "estimated_calories": f"{calories} kcal",
         "description": ex["description"],
+        "youtube":ex["youtube"]
     }
 
 
